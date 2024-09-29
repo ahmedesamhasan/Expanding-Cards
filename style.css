@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
+}
+body {
+    font-family: 'Courier New', Courier, monospace; /* Sets the font family */
+    display: flex; /* Enables flexbox layout */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    height: 100vh; /* Sets the height to 100% of the viewport height */
+    overflow: hidden; /* Hides scrollbars */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    font-weight: bold; /* Makes text bold */
+    background-color: #f0f0f0; /* Sets a light gray background color */
+}
+.container {
+    display: flex; /* Aligns child panels in a horizontal row */
+    width: 90vw; /* Sets container width to 90% of the viewport width */
+    gap: 10px; /* Adds space between the panels */
+}
+.panel {
+    background-size: cover; /* Scales the background image to cover the panel */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents background image from repeating */
+    height: 80vh; /* Sets the height of each panel */
+    border-radius: 50px; /* Rounds the panel corners */
+    color: #fff; /* Sets the text color to white */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    flex: 0.5; /* Makes each panel take up 50% of available space */
+    margin: 10px; /* Adds space around each panel */
+    position: relative; /* Enables absolute positioning of child elements like the heading */
+    transition: flex 0.7s ease-in-out, background-size 0.3s; /* Smooth transition for size and background */
+}
+.panel h3 {
+    font-size: 24px; /* Sets the font size */
+    position: absolute; /* Positions the heading at the bottom-left corner of the panel */
+    bottom: 20px; /* Moves heading 20px up from the bottom */
+    left: 20px; /* Moves heading 20px right from the left */
+    margin: 0; /* Removes default margin */
+    opacity: 0; /* Initially hides the heading */
+    transition: opacity 0.4s ease-in; /* Adds smooth transition for the heading’s visibility */
+}
+.panel.active {
+    flex: 5; /* When active, the panel expands to 5 times its normal width */
+    background-size: cover; /* Ensures the background image covers the expanded panel */
+}
+.panel.active h3 {
+    opacity: 1; /* Makes the heading visible when the panel is active */
+}
+@media (max-width: 768px) {
+    .panel {
+        height: 60vh; /* Adjusts the panel height on medium-sized screens */
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column; /* Stacks panels vertically on small screens */
+        width: 100vw; /* Takes up the full width of the viewport */
+    }
+    .panel {
+        height: 40vh; /* Adjusts panel height on small screens */
+    }
+    .panel:nth-of-type(4), .panel:nth-of-type(5) {
+        display: none; /* Hides the 4th and 5th panels on very small screens */
+    }
+}
